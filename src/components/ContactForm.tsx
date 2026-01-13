@@ -2,6 +2,7 @@ import type React from "react";
 
 import { Button } from "./ui/Button";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const GOOGLE_SHEETS_URL =
   import.meta.env.VITE_GOOGLE_SHEETS_URL ||
@@ -20,9 +21,7 @@ export const ContactForm = () => {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
 
   // Validation functions
@@ -101,8 +100,6 @@ export const ContactForm = () => {
         [name]: undefined,
       }));
     }
-
-    if (error) setError(null);
   };
 
   const handleBlur = (
@@ -136,12 +133,11 @@ export const ContactForm = () => {
 
     // Validate form before submitting
     if (!validateForm()) {
-      setError("Please check the fields you have entered.");
+      toast.error("Please check the fields you have entered.");
       return;
     }
 
     setLoading(true);
-    setError(null);
 
     try {
       await fetch(GOOGLE_SHEETS_URL, {
@@ -158,16 +154,14 @@ export const ContactForm = () => {
       });
 
       console.log("Form submitted:", formData);
-      setSubmitted(true);
+      toast.success(
+        "Message sent successfully! We'll get back to you soon. 🎉"
+      );
       setErrors({});
-
-      setTimeout(() => {
-        setFormData({ name: "", email: "", message: "" });
-        setSubmitted(false);
-      }, 1000);
+      setFormData({ name: "", email: "", message: "" });
     } catch (err) {
       console.error("Error submitting form:", err);
-      setError("An error occurred. Please try again later.");
+      toast.error("An error occurred. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -274,30 +268,12 @@ export const ContactForm = () => {
             <Button
               type="submit"
               size="lg"
-              disabled={loading || submitted}
+              disabled={loading}
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-              {loading
-                ? "Sending..."
-                : submitted
-                ? "Message Sent! 🎉"
-                : "Send Message"}
+              {loading ? "Sending..." : "Send Message"}
             </Button>
           </form>
-
-          {error && (
-            <div className="mt-4 p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-center">
-              <p className="text-destructive font-medium">{error}</p>
-            </div>
-          )}
-
-          {submitted && !error && (
-            <div className="mt-4 p-4 bg-primary/10 rounded-lg text-center">
-              <p className="text-primary font-medium">
-                Thank you! We'll get back to you soon.
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </section>
