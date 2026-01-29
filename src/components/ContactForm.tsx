@@ -3,6 +3,7 @@ import type React from "react";
 import { Button } from "./ui/Button";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const GOOGLE_SHEETS_URL =
   import.meta.env.VITE_GOOGLE_SHEETS_URL ||
@@ -23,6 +24,19 @@ export const ContactForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
+  const handleInputMouseMove = (e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setMousePosition({ x, y });
+  };
+
+  const handleInputMouseLeave = () => {
+    setMousePosition({ x: 0, y: 0 });
+  };
 
   // Validation functions
   const validateName = (name: string): string | undefined => {
@@ -168,112 +182,321 @@ export const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-card/50">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-16 md:py-24 bg-card/50 relative overflow-hidden">
+      {/* Decorative Envelope Icon */}
+      <motion.div
+        className="absolute top-20 right-20 text-6xl opacity-5"
+        animate={{
+          rotate: [0, 10, -10, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        ✉️
+      </motion.div>
+
+      {/* Decorative Mail Icons */}
+      {["📧", "✉️", "📮"].map((icon, i) => (
+        <motion.div
+          key={`mail-${i}`}
+          className="absolute text-3xl opacity-10"
+          style={{
+            left: `${10 + i * 30}%`,
+            top: `${15 + (i % 2) * 70}%`,
+          }}
+          animate={{
+            y: [0, -15, 0],
+            rotate: [0, 15, -15, 0],
+            opacity: [0.05, 0.15, 0.05],
+          }}
+          transition={{
+            duration: 5 + i,
+            repeat: Infinity,
+            delay: i * 0.6,
+            ease: "easeInOut",
+          }}
+        >
+          {icon}
+        </motion.div>
+      ))}
+
+      {/* Decorative Dots Pattern */}
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={`contact-dot-${i}`}
+          className="absolute w-1 h-1 bg-primary/20 rounded-full"
+          style={{
+            left: `${5 + (i % 5) * 20}%`,
+            top: `${10 + Math.floor(i / 5) * 20}%`,
+          }}
+          animate={{
+            scale: [0, 1.5, 0],
+            opacity: [0, 0.8, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            delay: i * 0.2,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Decorative Lines */}
+      <motion.div
+        className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-primary/10 to-transparent"
+        animate={{
+          opacity: [0.1, 0.3, 0.1],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-secondary/10 to-transparent"
+        animate={{
+          opacity: [0.1, 0.3, 0.1],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          delay: 1.5,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Background effects */}
+      <div className="absolute inset-0 opacity-20">
+        <motion.div
+          className="absolute top-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-10 left-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-linear-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent animate-gradient-x bg-size-[200%_auto]">
               Get in Touch
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-xl md:text-2xl text-muted-foreground/90 max-w-xl mx-auto">
               Have questions? We'd love to hear from you. Send us a message
               anytime.
             </p>
-          </div>
+          </motion.div>
 
-          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-            <div>
+          <motion.form
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            onSubmit={handleSubmit}
+            className="space-y-6"
+            noValidate
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
               <label
                 htmlFor="name"
                 className="block text-sm font-medium text-foreground mb-2"
               >
                 Full Name
               </label>
-              <input
+              <motion.input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                onFocus={() => setFocusedField("name")}
+                onMouseMove={handleInputMouseMove}
+                onMouseLeave={handleInputMouseLeave}
                 required
-                className={`w-full px-4 py-2 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
+                whileFocus={{ scale: 1.01 }}
+                style={{
+                  transform: focusedField === "name"
+                    ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
+                    : undefined,
+                }}
+                className={`w-full px-4 py-3 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300 magnetic ${
                   errors.name
                     ? "border-destructive focus:ring-destructive"
-                    : "border-input"
+                    : "border-input focus:border-primary"
                 }`}
                 placeholder="Your name"
               />
               {errors.name && (
-                <p className="mt-1 text-sm text-destructive">{errors.name}</p>
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-1 text-sm text-destructive"
+                >
+                  {errors.name}
+                </motion.p>
               )}
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-foreground mb-2"
               >
                 Email Address
               </label>
-              <input
+              <motion.input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                onFocus={() => setFocusedField("email")}
+                onMouseMove={handleInputMouseMove}
+                onMouseLeave={handleInputMouseLeave}
                 required
-                className={`w-full px-4 py-2 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
+                whileFocus={{ scale: 1.01 }}
+                style={{
+                  transform: focusedField === "email"
+                    ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
+                    : undefined,
+                }}
+                className={`w-full px-4 py-3 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300 magnetic ${
                   errors.email
                     ? "border-destructive focus:ring-destructive"
-                    : "border-input"
+                    : "border-input focus:border-primary"
                 }`}
                 placeholder="you@example.com"
               />
               {errors.email && (
-                <p className="mt-1 text-sm text-destructive">{errors.email}</p>
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-1 text-sm text-destructive"
+                >
+                  {errors.email}
+                </motion.p>
               )}
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-foreground mb-2"
               >
                 Message
               </label>
-              <textarea
+              <motion.textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                onFocus={() => setFocusedField("message")}
+                onMouseMove={handleInputMouseMove}
+                onMouseLeave={handleInputMouseLeave}
                 required
                 rows={5}
-                className={`w-full px-4 py-2 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none ${
+                whileFocus={{ scale: 1.01 }}
+                style={{
+                  transform: focusedField === "message"
+                    ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
+                    : undefined,
+                }}
+                className={`w-full px-4 py-3 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none transition-all duration-300 magnetic ${
                   errors.message
                     ? "border-destructive focus:ring-destructive"
-                    : "border-input"
+                    : "border-input focus:border-primary"
                 }`}
                 placeholder="Tell us what's on your mind..."
               />
               {errors.message && (
-                <p className="mt-1 text-sm text-destructive">
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-1 text-sm text-destructive"
+                >
                   {errors.message}
-                </p>
+                </motion.p>
               )}
-            </div>
+            </motion.div>
 
-            <Button
-              type="submit"
-              size="lg"
-              disabled={loading}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, duration: 0.5 }}
             >
-              {loading ? "Sending..." : "Send Message"}
-            </Button>
-          </form>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={loading}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer animate-shimmer relative overflow-hidden transition-all duration-300"
+                >
+                  <motion.span
+                    animate={loading ? { opacity: [1, 0.5, 1] } : {}}
+                    transition={{
+                      duration: 1,
+                      repeat: loading ? Infinity : 0,
+                    }}
+                  >
+                    {loading ? "Sending..." : "Send Message"}
+                  </motion.span>
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.form>
         </div>
       </div>
     </section>

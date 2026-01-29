@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const testimonials = [
   {
@@ -25,10 +25,10 @@ const testimonials = [
     rating: 5,
     color: "from-orange-500 to-red-500",
   },
-]
+];
 
 export const Testimonials = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section className="py-16 md:py-24 relative">
@@ -52,42 +52,48 @@ export const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="group relative cursor-pointer"
+              className="group relative cursor-pointer h-full"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <div
-                className={`absolute -inset-1 bg-gradient-to-r ${testimonial.color} rounded-xl blur opacity-0 group-hover:opacity-20 transition-all duration-500 ${hoveredIndex === index ? "opacity-20" : ""
-                  }`}
+                className={`absolute -inset-1 bg-gradient-to-r ${testimonial.color} rounded-xl blur opacity-0 group-hover:opacity-20 transition-all duration-500 ${
+                  hoveredIndex === index ? "opacity-20" : ""
+                }`}
               />
 
               <div
-                className={`relative p-6 bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 transition-all duration-500 ${hoveredIndex === index
-                  ? "border-primary/30 bg-card/80 shadow-2xl shadow-primary/20 transform -translate-y-2"
-                  : ""
-                  }`}
+                className={`relative p-6 bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 transition-all duration-500 h-full flex flex-col justify-between ${
+                  hoveredIndex === index
+                    ? "border-primary/30 bg-card/80 shadow-2xl shadow-primary/20 transform -translate-y-2"
+                    : ""
+                }`}
               >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span
-                      key={i}
-                      className="text-lg transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        transitionDelay: `${i * 50}ms`,
-                      }}
-                    >
-                      ★
-                    </span>
-                  ))}
+                <div>
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <span
+                        key={i}
+                        className="text-lg transition-transform duration-300 group-hover:scale-110"
+                        style={{
+                          transitionDelay: `${i * 50}ms`,
+                        }}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground mb-4 group-hover:text-foreground/80 transition-colors">
+                    {testimonial.content}
+                  </p>
                 </div>
-                <p className="text-muted-foreground mb-4 group-hover:text-foreground/80 transition-colors">
-                  {testimonial.content}
-                </p>
                 <div>
                   <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
                     {testimonial.name}
                   </p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.role}
+                  </p>
                 </div>
               </div>
             </div>
@@ -95,5 +101,5 @@ export const Testimonials = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

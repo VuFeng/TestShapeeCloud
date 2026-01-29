@@ -34,7 +34,7 @@ export const About = () => {
 
       <div className="container relative mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
             A Peaceful Space for Modern Life
           </h2>
 

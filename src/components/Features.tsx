@@ -89,7 +89,7 @@ export const Features = () => {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto text-center mb-12"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
             Sound Experiences That Transform
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground">
