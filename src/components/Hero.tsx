@@ -1,10 +1,12 @@
 import { Button } from "./ui/Button";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import image1 from "../assets/images/1.webp";
-import image2 from "../assets/images/2.webp";
-import image3 from "../assets/images/3.webp";
-import image4 from "../assets/images/4.webp";
+import image1 from "../assets/images/1.png";
+import image2 from "../assets/images/2.png";
+import image3 from "../assets/images/3.png";
+import image4 from "../assets/images/4.png";
+import image5 from "../assets/images/5.png";
+import image6 from "../assets/images/6.png";
 
 const slides = [
   {
@@ -28,6 +30,18 @@ const slides = [
   {
     title: "Vital Energy",
     image: image4,
+    alt: "wellness app interface",
+    description: "Gamma waves for positivity",
+  },
+  {
+    title: "Vital Energy",
+    image: image5,
+    alt: "wellness app interface",
+    description: "Gamma waves for positivity",
+  },
+  {
+    title: "Vital Energy",
+    image: image6,
     alt: "wellness app interface",
     description: "Gamma waves for positivity",
   },
@@ -166,9 +180,8 @@ export const Hero = () => {
 
           <div className="relative w-[300px] md:w-[350px] h-[600px] md:h-[700px] bg-white/20 backdrop-blur-xl border border-white/40 rounded-[3rem] shadow-2xl shadow-primary/20 overflow-hidden p-3 transform rotate-[-5deg] hover:rotate-0 transition-transform duration-700 ease-out z-10">
             {/* Phone Bezel */}
-            <div className="absolute inset-x-0 top-0 h-7 bg-black/20 z-20 rounded-b-2xl mx-24 backdrop-blur-md" />
 
-            <div className="relative w-full h-full bg-background rounded-[2.5rem] overflow-hidden">
+            <div className="relative w-full h-full bg-black rounded-[2.5rem] overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}
@@ -181,7 +194,7 @@ export const Hero = () => {
                   <img
                     src={slides[currentSlide].image}
                     alt={slides[currentSlide].alt}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
 
                   {/* Gradient Overlay on Image */}
