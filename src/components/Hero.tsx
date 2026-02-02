@@ -107,7 +107,12 @@ export const Hero = () => {
             >
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-white rounded-xl px-8 py-6 text-lg font-semibold shadow-lg shadow-accent/20 transition-all duration-300 relative overflow-hidden group"
+                onClick={() =>
+                  document
+                    .getElementById("cta")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="cursor-pointer bg-accent hover:bg-accent/90 text-white rounded-xl px-8 py-6 text-lg font-semibold shadow-lg shadow-accent/20 transition-all duration-300 relative overflow-hidden group"
               >
                 <span className="relative z-10">Start Free Trial</span>
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
@@ -118,7 +123,12 @@ export const Hero = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                className="text-primary hover:bg-primary/5 rounded-xl px-8 py-6 text-lg font-medium border-2 border-primary/20 hover:border-primary/50 transition-all duration-300"
+                onClick={() =>
+                  document
+                    .getElementById("cta")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="cursor-pointer text-primary hover:bg-primary/5 rounded-xl px-8 py-6 text-lg font-medium border-2 border-primary/20 hover:border-primary/50 transition-all duration-300"
               >
                 Listen to Demo
               </Button>
