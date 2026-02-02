@@ -79,12 +79,12 @@ export const Footer = () => {
               © {currentYear} CalmLiving. All rights reserved.
             </p>
             <a
-              href="mailto:support@calmliving.app"
+              href="mailto:noreply.smex@gmail.com"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
             >
               <Mail className="w-4 h-4" />
               <span className="relative">
-                support@calmliving.app
+                noreply.smex@gmail.com
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
               </span>
             </a>

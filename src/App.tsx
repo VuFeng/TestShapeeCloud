@@ -7,12 +7,13 @@ import { ContactForm } from "./components/ContactForm";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { CTA } from "./components/CTA";
+import { BackToTop } from "./components/BackToTop";
 
 function App() {
   return (
     <main className="min-h-screen flex flex-col">
       <Toaster
-        position="top-center"
+        position="bottom-right"
         toastOptions={{
           duration: 3000,
           style: {
@@ -41,6 +42,7 @@ function App() {
       <Testimonials />
       <CTA />
       <ContactForm />
+      <BackToTop />
       <Footer />
     </main>
   );
