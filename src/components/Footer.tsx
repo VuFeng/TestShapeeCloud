@@ -38,11 +38,11 @@ export const Footer = () => {
                 />
               </div>
               <span className="font-semibold text-foreground bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Energia
+                CalmLiving
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Frequency audio for calm living and mental clarity.
+              Frequency Audio for CalmLiving and mental clarity.
             </p>
           </div>
 
@@ -76,15 +76,15 @@ export const Footer = () => {
         <div className="border-t border-border/30 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Energia. All rights reserved.
+              © {currentYear} CalmLiving. All rights reserved.
             </p>
             <a
-              href="mailto:support@energia.app"
+              href="mailto:support@calmliving.app"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
             >
               <Mail className="w-4 h-4" />
               <span className="relative">
-                support@energia.app
+                support@calmliving.app
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
               </span>
             </a>

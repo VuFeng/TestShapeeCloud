@@ -6,17 +6,17 @@ export const About = () => {
     {
       label: "Mental Balance",
       icon: Brain,
-      color: "from-purple-500 to-pink-500",
+      color: "from-violet-500 to-indigo-600",
     },
     {
       label: "High Quality",
       icon: Sparkles,
-      color: "from-yellow-500 to-orange-500",
+      color: "from-amber-400 to-yellow-500",
     },
     {
       label: "Mindful Design",
       icon: Music,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-purple-500 to-rose-500",
     },
   ];
 
@@ -39,10 +39,10 @@ export const About = () => {
           </h2>
 
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Energia is designed for those seeking a stress-free listening
+            CalmLiving is designed for those seeking a stress-free listening
             environment. With a minimalist, distraction-free interface and
-            high-quality audio, Energia provides a calm digital space where you
-            can unwind, find clarity, and cultivate positive energy in your
+            high-quality audio, CalmLiving provides a calm digital space where
+            you can unwind, find clarity, and cultivate positive energy in your
             daily life.
           </p>
 
@@ -77,8 +77,8 @@ export const About = () => {
                       {stat.label === "Mental Balance"
                         ? "Frequency-based audio for emotional calm and inner peace"
                         : stat.label === "High Quality"
-                        ? "Premium audio playback optimized for your well-being"
-                        : "Clean, distraction-free interface for seamless listening"}
+                          ? "Premium audio playback optimized for your well-being"
+                          : "Clean, distraction-free interface for seamless listening"}
                     </p>
                   </div>
                 </div>

@@ -5,7 +5,7 @@ const testimonials = [
     name: "Sarah Chen",
     role: "Meditation Practitioner",
     content:
-      "Energia transformed my meditation practice. The frequency audio is incredibly soothing and helps me reach deeper states of calm.",
+      "CalmLiving transformed my meditation practice. The frequency audio is incredibly soothing and helps me reach deeper states of calm.",
     rating: 5,
     color: "from-blue-500 to-cyan-500",
   },
@@ -13,7 +13,7 @@ const testimonials = [
     name: "James Mitchell",
     role: "Corporate Professional",
     content:
-      "I use Energia during work breaks to reset my focus. It's become an essential part of my daily routine for mental clarity.",
+      "I use CalmLiving during work breaks to reset my focus. It's become an essential part of my daily routine for mental clarity.",
     rating: 5,
     color: "from-purple-500 to-pink-500",
   },
@@ -44,7 +44,7 @@ export const Testimonials = () => {
             Loved by Our Community
           </h2>
           <p className="text-lg text-muted-foreground">
-            Real experiences from people who found their calm with Energia
+            Real experiences from people who found their calm with CalmLiving
           </p>
         </div>
 

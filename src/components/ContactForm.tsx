@@ -25,9 +25,14 @@ export const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
 
-  const handleInputMouseMove = (e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputMouseMove = (
+    e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
@@ -99,7 +104,7 @@ export const ContactForm = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -117,7 +122,7 @@ export const ContactForm = () => {
   };
 
   const handleBlur = (
-    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     let fieldError: string | undefined;
@@ -169,7 +174,7 @@ export const ContactForm = () => {
 
       console.log("Form submitted:", formData);
       toast.success(
-        "Message sent successfully! We'll get back to you soon. 🎉"
+        "Message sent successfully! We'll get back to you soon. 🎉",
       );
       setErrors({});
       setFormData({ name: "", email: "", message: "" });
@@ -182,7 +187,10 @@ export const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-card/50 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-16 md:py-24 bg-card/50 relative overflow-hidden"
+    >
       {/* Decorative Envelope Icon */}
       <motion.div
         className="absolute top-20 right-20 text-6xl opacity-5"
@@ -309,7 +317,7 @@ export const ContactForm = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-linear-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent animate-gradient-x bg-size-[200%_auto]">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-linear-to-r from-primary via-accent to-secondary bg-clip-text text-transparent animate-gradient-x bg-size-[200%_auto]">
               Get in Touch
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground/90 max-w-xl mx-auto">
@@ -352,9 +360,10 @@ export const ContactForm = () => {
                 required
                 whileFocus={{ scale: 1.01 }}
                 style={{
-                  transform: focusedField === "name"
-                    ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
-                    : undefined,
+                  transform:
+                    focusedField === "name"
+                      ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
+                      : undefined,
                 }}
                 className={`w-full px-4 py-3 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300 magnetic ${
                   errors.name
@@ -399,9 +408,10 @@ export const ContactForm = () => {
                 required
                 whileFocus={{ scale: 1.01 }}
                 style={{
-                  transform: focusedField === "email"
-                    ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
-                    : undefined,
+                  transform:
+                    focusedField === "email"
+                      ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
+                      : undefined,
                 }}
                 className={`w-full px-4 py-3 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300 magnetic ${
                   errors.email
@@ -446,9 +456,10 @@ export const ContactForm = () => {
                 rows={5}
                 whileFocus={{ scale: 1.01 }}
                 style={{
-                  transform: focusedField === "message"
-                    ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
-                    : undefined,
+                  transform:
+                    focusedField === "message"
+                      ? `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
+                      : undefined,
                 }}
                 className={`w-full px-4 py-3 bg-background border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none transition-all duration-300 magnetic ${
                   errors.message

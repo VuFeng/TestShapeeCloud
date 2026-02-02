@@ -131,16 +131,13 @@ export const Header = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/50 to-accent/50 blur-sm animate-pulse-soft" />
               <img
                 src={logo}
-                alt="Energia Logo"
+                alt="CalmLiving Logo"
                 className="relative w-full h-full object-contain rounded-full p-1"
               />
             </div>
-            <span
-              className={`text-2xl font-bold font-heading bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-all duration-500 ${
-                isHovered ? "scale-105" : ""
-              }`}
-            >
-              Energia
+            <span className="text-2xl font-bold font-heading">
+              <span className="text-primary">Calm</span>
+              <span className="text-accent">Living</span>
             </span>
           </a>
 
@@ -169,7 +166,7 @@ export const Header = () => {
             >
               <Button
                 size="md"
-                className="relative cursor-pointer overflow-hidden bg-gradient-to-r from-accent to-yellow-500 text-white rounded-full px-6 shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-300 border-none"
+                className="relative cursor-pointer overflow-hidden bg-gradient-to-r from-primary to-secondary text-white rounded-full px-6 shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-300 border-none"
                 onClick={() => smoothScrollTo("cta")}
               >
                 <Download className="w-4 h-4 mr-2" />
@@ -219,7 +216,7 @@ export const Header = () => {
             {/* Mobile CTA Button */}
             <Button
               size="lg"
-              className="w-full mt-4 bg-gradient-to-r from-accent to-yellow-500 text-white rounded-xl shadow-lg shadow-accent/20"
+              className="w-full mt-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl shadow-lg shadow-accent/20"
               onClick={() => {
                 setIsMobileOpen(false);
                 smoothScrollTo("cta");

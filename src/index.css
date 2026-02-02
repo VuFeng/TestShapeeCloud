@@ -1,52 +1,52 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap");
 
 :root {
-  /* Liquid Glass Palette - Energia Premium */
-  --background: #fdf2f8; /* Pink 50 */
-  --foreground: #831843; /* Pink 900 */
+  /* RelaxApp Violet Palette - Dreamy Luxury (No Green) */
+  --background: #f5f3ff; /* Violet 50 - Soft Lavender Mist */
+  --foreground: #2e1065; /* Violet 950 - Deep Space */
 
-  --card: rgba(255, 255, 255, 0.6);
-  --card-foreground: #831843;
+  --card: rgba(255, 255, 255, 0.7);
+  --card-foreground: #2e1065;
 
   --popover: #ffffff;
-  --popover-foreground: #831843;
+  --popover-foreground: #2e1065;
 
-  /* Primary: Pink 600 */
-  --primary: #db2777;
+  /* Primary: Deep Violet (The "Calm" in the icon space) */
+  --primary: #6d28d9; /* Violet 700 */
   --primary-foreground: #ffffff;
 
-  /* Secondary: Pink 400 */
-  --secondary: #f472b6;
+  /* Secondary: Indigo (The depth of space) */
+  --secondary: #4338ca; /* Indigo 700 */
   --secondary-foreground: #ffffff;
 
-  /* Accent/CTA: Gold 600 */
-  --accent: #ca8a04;
+  /* Accent/CTA: Gold (The "Living" warmth) */
+  --accent: #b45309; /* Amber 700 */
   --accent-foreground: #ffffff;
 
-  --muted: #fbcfe8; /* Pink 200 */
-  --muted-foreground: #be185d; /* Pink 700 */
+  --muted: #ede9fe; /* Violet 100 */
+  --muted-foreground: #5b21b6; /* Violet 800 */
 
   --destructive: #be123c;
   --destructive-foreground: #ffffff;
 
-  --border: #f9a8d4; /* Pink 300 */
-  --input: #fce7f3; /* Pink 100 */
-  --ring: #db2777;
+  --border: #ddd6fe; /* Violet 200 */
+  --input: #ede9fe; /* Violet 100 */
+  --ring: #6d28d9;
 
-  --radius: 1rem; /* More rounded for "Soft/Liquid" feel */
+  --radius: 1rem;
 
-  /* Chart Colors (maintained generally but tweaked) */
-  --chart-1: #db2777;
-  --chart-2: #ca8a04;
-  --chart-3: #f472b6;
-  --chart-4: #0ea5e9; /* Contrast Blue */
-  --chart-5: #8b5cf6; /* Violet */
+  /* Chart Colors - Cosmic/Dreamy */
+  --chart-1: #6d28d9; /* Violet */
+  --chart-2: #b45309; /* Gold */
+  --chart-3: #4338ca; /* Indigo */
+  --chart-4: #a855f7; /* Purple */
+  --chart-5: #ec4899; /* Pink */
 }
 
 @theme inline {
-  --font-sans: "Raleway", "Arial", "Helvetica", sans-serif;
-  --font-heading: "Lora", "Georgia", serif; /* New token for headings */
+  --font-sans: "Arial", "Helvetica", sans-serif;
+  --font-heading:
+    "Arial", "Helvetica", sans-serif; /* Headings must also be Arial */
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

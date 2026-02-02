@@ -8,7 +8,7 @@ const features = [
     title: "Relaxation & Deep Rest",
     description:
       "Immerse yourself in frequency audio designed for deep relaxation and peaceful rest",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-violet-500 to-indigo-600",
     accent: "text-white",
   },
   {
@@ -16,7 +16,7 @@ const features = [
     title: "Energy Reset",
     description:
       "Recharge your mind and spirit with positive energy and mindset optimization",
-    color: "from-yellow-500 to-orange-500",
+    color: "from-amber-400 to-yellow-500",
     accent: "text-white",
   },
   {
@@ -24,7 +24,7 @@ const features = [
     title: "Focus & Productivity",
     description:
       "Enhance concentration and mental clarity with focus-enhancing frequency experiences",
-    color: "from-purple-500 to-pink-500",
+    color: "from-indigo-500 to-blue-600",
     accent: "text-white",
   },
   {
@@ -32,7 +32,7 @@ const features = [
     title: "Stress Relief",
     description:
       "Release emotional tension and find calm through soothing scalar sound experiences",
-    color: "from-red-500 to-pink-500",
+    color: "from-rose-400 to-pink-500",
     accent: "text-white",
   },
   {
@@ -40,7 +40,7 @@ const features = [
     title: "Sleep Preparation",
     description:
       "Prepare your body and mind for restful sleep with nighttime-optimized audio",
-    color: "from-indigo-500 to-blue-500",
+    color: "from-slate-600 to-zinc-700",
     accent: "text-white",
   },
   {
@@ -48,7 +48,7 @@ const features = [
     title: "Meditation & Mindfulness",
     description:
       "Deepen your practice with frequency-guided meditation and mindful awareness",
-    color: "from-green-500 to-teal-500",
+    color: "from-purple-500 to-violet-600",
     accent: "text-white",
   },
 ];
