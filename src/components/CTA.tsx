@@ -48,7 +48,7 @@ export const CTA = () => {
               <button className="w-full sm:w-auto relative px-8 py-4 rounded-full font-bold text-lg text-primary border-2 border-primary bg-background/50 backdrop-blur-md overflow-hidden group shadow-lg shadow-primary/10">
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                 <a
-                  href="https://apps.apple.com/it/app/frequency-audio-for-calmliving/id6757774747"
+                  href="https://apps.apple.com/us/app/frequency-audio-for-calmliving/id6757774747"
                   target="_blank"
                   className="relative flex items-center justify-center gap-2"
                 >
